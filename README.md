@@ -19,9 +19,14 @@ password = 12345
 To run the server, run:
 
 ```
-npm start or yarn start
+npm run start or yarn start
 ```
 
+To test, run:
+
+```
+npm run test or yarn test
+```
 To view the Swagger UI interface:
 
 ```
