@@ -47,7 +47,7 @@ describe("Get /api/v1/products/wishlist", () => {
 
 
     afterAll(
-      async () => await productsModel.destroy({ where: { id: product.id } })
+      async () => await product.destroy({ where: { id: product.id } })
     );
 
     it("Response 200", (done) => {
