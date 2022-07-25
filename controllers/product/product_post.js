@@ -1,6 +1,8 @@
 const { Products } = require("../../models");
 const { Success200 } = require("../../helpers/response/success");
 const { Error500, Error4xx } = require("../../helpers/response/error");
+const { Op } = require("sequelize");
+const { SOLD_PRODUCT } = require("../../helpers/database/enums");
 
 async function productPost(req, res) {
     try {
@@ -8,7 +10,10 @@ async function productPost(req, res) {
 
         const productCount = await Products.count({
             where: {
-                user_id: userId
+                user_id: userId,
+                status: {
+                    [Op.not]: SOLD_PRODUCT
+                }
             }
         });
 

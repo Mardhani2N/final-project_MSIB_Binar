@@ -104,12 +104,15 @@ const GetProductBid = async (req, res) => {
             ) ASC`)
         });
 
-        if (product.user_id !== currentUser.id){
-            return Error4xx(res, 403, "You are not the owner of this product");
+        if (product){
+            if (product.user_id !== currentUser.id){
+                return Error4xx(res, 403, "You are not the owner of this product");
+            }
+            return Success200(res, NewResponseProductBids(product));
         }
+        return Error4xx(res, 404, "Product not found")
 
 
-        return Success200(res, NewResponseProductBids(product));
 
     } catch(err){
         console.log(err);
